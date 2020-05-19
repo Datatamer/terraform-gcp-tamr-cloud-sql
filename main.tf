@@ -1,5 +1,5 @@
 resource "google_sql_database_instance" "tamr" {
-  name             = var.name
+  name = var.name
   # NOTE: this is pinned as its the version that tamr needs
   database_version = "POSTGRES_9_6"
   project          = var.project_id
