@@ -1,7 +1,14 @@
+resource "google_project_service" "enable_sql" {
+  project = var.project_id
+  service = "sqladmin.googleapis.com"
+
+  disable_on_destroy = false
+}
+
 resource "google_sql_database_instance" "tamr" {
   name = var.name
   # NOTE: this is pinned as its the version that tamr needs
-  database_version = "POSTGRES_9_6"
+  database_version = "POSTGRES_12"
   project          = var.project_id
 
   settings {
@@ -38,3 +45,19 @@ resource "google_sql_user" "sql_dev_user" {
 # TODO: if need more config for the database use postgres
 # provider to create the rest of the config
 # SEE: https://www.terraform.io/docs/providers/postgresql/index.html
+
+
+# IAM
+resource "google_project_iam_member" "cloud_sql_viewer" {
+  count   = length(var.cloud_sql_viewer_members)
+  project = var.project_id
+  role    = "roles/cloudsql.viewer"
+  member  = var.cloud_sql_viewer_members[count.index]
+}
+
+resource "google_project_iam_member" "cloud_sql_client" {
+  count   = length(var.cloud_sql_client_members)
+  project = var.project_id
+  role    = "roles/cloudsql.client"
+  member  = var.cloud_sql_client_members[count.index]
+}
