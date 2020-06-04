@@ -1,6 +1,8 @@
 resource "google_project_service" "enable_sql" {
   project = var.project_id
   service = "sqladmin.googleapis.com"
+
+  disable_on_destroy = false
 }
 
 resource "google_sql_database_instance" "tamr" {
