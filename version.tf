@@ -4,4 +4,3 @@ terraform {
     google = ">= 3.18.0"
   }
 }
-
