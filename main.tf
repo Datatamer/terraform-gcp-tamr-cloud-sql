@@ -24,6 +24,8 @@ resource "google_sql_database_instance" "tamr" {
 }
 
 resource "google_sql_database" "tamr" {
+  depends_on = [google_sql_database_instance.tamr]
+
   name     = "doit"
   project  = var.project_id
   instance = google_sql_database_instance.tamr.name
@@ -36,6 +38,8 @@ resource "random_password" "sql_tamr_user_password" {
 }
 
 resource "google_sql_user" "sql_dev_user" {
+  depends_on = [google_sql_database_instance.tamr]
+
   name     = "tamr"
   project  = var.project_id
   instance = google_sql_database_instance.tamr.name
