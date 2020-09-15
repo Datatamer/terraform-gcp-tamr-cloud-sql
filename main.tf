@@ -53,15 +53,23 @@ resource "google_sql_user" "sql_dev_user" {
 
 # IAM
 resource "google_project_iam_member" "cloud_sql_viewer" {
-  count   = length(var.cloud_sql_viewer_members)
-  project = var.project_id
-  role    = "roles/cloudsql.viewer"
-  member  = var.cloud_sql_viewer_members[count.index]
+  for_each = toset(var.cloud_sql_viewer_members)
+  project  = var.project_id
+  role     = "roles/cloudsql.viewer"
+  member   = each.value
 }
 
 resource "google_project_iam_member" "cloud_sql_client" {
-  count   = length(var.cloud_sql_client_members)
-  project = var.project_id
-  role    = "roles/cloudsql.client"
-  member  = var.cloud_sql_client_members[count.index]
+  for_each = toset(var.cloud_sql_client_members)
+  project  = var.project_id
+  role     = "roles/cloudsql.client"
+  member   = each.value
+}
+
+# NOTE: this is needed for backups to work
+resource "google_project_iam_member" "cloud_sql_admin" {
+  for_each = toset(var.cloud_sql_admin_members)
+  project  = var.project_id
+  role     = "roles/cloudsql.admin"
+  member   = each.value
 }

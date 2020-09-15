@@ -50,3 +50,9 @@ variable "cloud_sql_client_members" {
   description = "The list of members to bind to sql client role"
   default     = []
 }
+
+variable "cloud_sql_admin_members" {
+  type        = list(string)
+  description = "The list of members to bind to sql admin role"
+  default     = []
+}
