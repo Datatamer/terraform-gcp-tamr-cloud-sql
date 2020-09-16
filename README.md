@@ -14,13 +14,13 @@ This modules creates the following resources:
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12 |
-| google | >= 3.18.0 |
+| google | >= 3.18.0, <= 4.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| google | >= 3.18.0 |
+| google | >= 3.18.0, <= 4.0.0 |
 | random | n/a |
 
 ## Inputs
@@ -29,6 +29,7 @@ This modules creates the following resources:
 |------|-------------|------|---------|:--------:|
 | name | name of the cloud sql instance to create | `string` | n/a | yes |
 | project\_id | the project to create the sql instance in | `string` | n/a | yes |
+| cloud\_sql\_admin\_members | The list of members to bind to sql admin role | `list(string)` | `[]` | no |
 | cloud\_sql\_client\_members | The list of members to bind to sql client role | `list(string)` | `[]` | no |
 | cloud\_sql\_viewer\_members | The list of members to bind to sql viewer role | `list(string)` | `[]` | no |
 | disk\_size | size of the disk to use | `number` | `100` | no |
