@@ -6,21 +6,39 @@ resource "google_project_service" "enable_sql" {
 }
 
 resource "google_sql_database_instance" "tamr" {
-  name = var.name
+  name    = var.name
+  project = var.project_id
+  region  = var.region
   # NOTE: this is pinned as its the version that tamr needs
   database_version = "POSTGRES_12"
-  project          = var.project_id
+
 
   settings {
     tier              = var.tier
-    availability_type = "REGIONAL"
     disk_size         = var.disk_size
     disk_type         = var.disk_type
+    activation_policy = var.activation_policy
+    disk_autoresize   = var.disk_autoresize
+    user_labels       = var.labels
+    availability_type = "REGIONAL"
 
-    user_labels = var.labels
+    dynamic "backup_configuration" {
+      for_each = var.backup_enabled ? ["true"] : []
+      content {
+        enabled                        = true
+        start_time                     = var.backup_start_time
+        point_in_time_recovery_enabled = var.backup_point_in_time_recovery_enabled
+      }
+    }
+
+    dynamic "ip_configuration" {
+      for_each = var.enable_private_ip ? ["true"] : []
+      content {
+        ipv4_enabled    = false
+        private_network = var.private_network_id
+      }
+    }
   }
-
-  region = var.region
 }
 
 resource "google_sql_database" "tamr" {
