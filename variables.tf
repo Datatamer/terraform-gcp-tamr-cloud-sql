@@ -98,3 +98,12 @@ variable "private_network_id" {
   description = "The VPC network from which the Cloud SQL instance is accessible for private IP"
   default     = ""
 }
+
+variable "database_flags" {
+  description = "List of Cloud SQL flags that are applied to the database server. See [more details](https://cloud.google.com/sql/docs/mysql/flags)"
+  type = list(object({
+    name  = string
+    value = string
+  }))
+  default = []
+}
