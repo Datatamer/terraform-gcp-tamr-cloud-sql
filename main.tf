@@ -31,6 +31,14 @@ resource "google_sql_database_instance" "tamr" {
       }
     }
 
+    dynamic "database_flags" {
+      for_each = var.database_flags
+      content {
+        name  = lookup(database_flags.value, "name", null)
+        value = lookup(database_flags.value, "value", null)
+      }
+    }
+
     dynamic "ip_configuration" {
       for_each = var.enable_private_ip ? ["true"] : []
       content {
