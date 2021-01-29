@@ -52,7 +52,7 @@ resource "google_sql_database_instance" "tamr" {
 resource "google_sql_database" "tamr" {
   depends_on = [google_sql_database_instance.tamr]
 
-  name     = "doit"
+  name     = var.db_name
   project  = var.project_id
   instance = google_sql_database_instance.tamr.name
 }

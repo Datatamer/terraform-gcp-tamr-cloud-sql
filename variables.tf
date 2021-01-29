@@ -3,6 +3,12 @@ variable "name" {
   description = "name of the cloud sql instance to create"
 }
 
+variable "db_name" {
+  type        = string
+  description = "name of the database"
+  default     = "doit"
+}
+
 variable "activation_policy" {
   type        = string
   description = "This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND"
