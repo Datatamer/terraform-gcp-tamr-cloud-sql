@@ -78,7 +78,7 @@ variable "cloud_sql_admin_members" {
 variable "backup_enabled" {
   type        = bool
   description = "True if backup configuration is enabled."
-  default     = false
+  default     = true
 }
 
 variable "backup_start_time" {
@@ -90,7 +90,7 @@ variable "backup_start_time" {
 variable "backup_point_in_time_recovery_enabled" {
   type        = bool
   description = "True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation."
-  default     = false
+  default     = true
 }
 
 variable "enable_private_ip" {
