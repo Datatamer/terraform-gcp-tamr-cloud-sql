@@ -23,7 +23,7 @@ variable "project_id" {
 variable "tier" {
   type        = string
   description = "the machine type to use for the sql instance"
-  default     = "db-custom-1-2048"
+  default     = "db-custom-1-3840"
 }
 
 variable "disk_size" {
