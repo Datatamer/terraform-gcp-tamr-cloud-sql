@@ -44,7 +44,7 @@ This modules creates the following resources:
 | labels | labels to be attached to the resources created | `map(string)` | `{}` | no |
 | private\_network\_id | The VPC network from which the Cloud SQL instance is accessible for private IP | `string` | `""` | no |
 | region | The region for the instance | `string` | `"us-east1"` | no |
-| tier | the machine type to use for the sql instance | `string` | `"db-custom-2-4096"` | no |
+| tier | the machine type to use for the sql instance | `string` | `"db-custom-1-2048"` | no |
 
 ## Outputs
 
