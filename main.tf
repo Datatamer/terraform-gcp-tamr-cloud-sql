@@ -101,11 +101,6 @@ resource "google_project_iam_member" "cloud_sql_admin" {
 }
 
 # Enable postgres extensions
-resource "postgresql_extension" "pg_trim" {
-  name     = "pg_trim"
-  database = google_sql_database.tamr.name
-}
-
 resource "postgresql_extension" "pg_stat" {
   name     = "pg_stat_statements"
   database = google_sql_database.tamr.name
