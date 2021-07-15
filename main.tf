@@ -57,7 +57,7 @@ resource "google_sql_database_instance" "tamr" {
     maintenance_window {
       day          = 2
       hour         = 10
-      update_track = stable
+      update_track = "stable"
     }
   }
 }
