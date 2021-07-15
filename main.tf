@@ -46,6 +46,13 @@ resource "google_sql_database_instance" "tamr" {
         private_network = var.private_network_id
       }
     }
+
+    insights_config {
+      query_insights_enabled  = true
+      query_string_length     = 4500
+      record_application_tags = true
+      record_client_address   = true
+    }
   }
 }
 
