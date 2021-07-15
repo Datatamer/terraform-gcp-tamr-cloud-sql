@@ -13,7 +13,7 @@ This modules creates the following resources:
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
+| terraform | >= 0.14 |
 | google | >= 3.18.0, <= 4.0.0 |
 
 ## Providers
@@ -30,13 +30,14 @@ This modules creates the following resources:
 | name | name of the cloud sql instance to create | `string` | n/a | yes |
 | project\_id | the project to create the sql instance in | `string` | n/a | yes |
 | activation\_policy | This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON\_DEMAND | `string` | `"ALWAYS"` | no |
-| backup\_enabled | True if backup configuration is enabled. | `bool` | `false` | no |
-| backup\_point\_in\_time\_recovery\_enabled | True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. | `bool` | `false` | no |
+| backup\_enabled | True if backup configuration is enabled. | `bool` | `true` | no |
+| backup\_point\_in\_time\_recovery\_enabled | True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. | `bool` | `true` | no |
 | backup\_start\_time | HH:MM format time indicating when backup configuration starts. | `string` | `"06:00"` | no |
 | cloud\_sql\_admin\_members | The list of members to bind to sql admin role | `list(string)` | `[]` | no |
 | cloud\_sql\_client\_members | The list of members to bind to sql client role | `list(string)` | `[]` | no |
 | cloud\_sql\_viewer\_members | The list of members to bind to sql viewer role | `list(string)` | `[]` | no |
 | database\_flags | List of Cloud SQL flags that are applied to the database server. See [more details](https://cloud.google.com/sql/docs/mysql/flags) | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `[]` | no |
+| db\_name | name of the database | `string` | `"doit"` | no |
 | disk\_autoresize | Enable disk to autoresize itself | `bool` | `true` | no |
 | disk\_size | size of the disk to use | `number` | `100` | no |
 | disk\_type | The disk type to use on the instance. should be either PD\_SSD or PD\_STANDARD | `string` | `"PD_SSD"` | no |
