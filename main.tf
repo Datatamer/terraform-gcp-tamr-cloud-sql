@@ -53,6 +53,12 @@ resource "google_sql_database_instance" "tamr" {
       record_application_tags = true
       record_client_address   = true
     }
+
+    maintenance_window {
+      day          = 2
+      hour         = 10
+      update_track = stable
+    }
   }
 }
 
