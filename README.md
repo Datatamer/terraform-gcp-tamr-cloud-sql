@@ -43,7 +43,13 @@ This modules creates the following resources:
 | disk\_type | The disk type to use on the instance. should be either PD\_SSD or PD\_STANDARD | `string` | `"PD_SSD"` | no |
 | enable\_private\_ip | Whether this instance should use a public or private ip address | `bool` | `false` | no |
 | labels | labels to be attached to the resources created | `map(string)` | `{}` | no |
+| mw\_day | Day of week (1-7), starting on Monday to declare one-hour MW when an instance can automatically restart to apply updates | `number` | `2` | no |
+| mw\_hour | Hour of day (0-23) in UTC to declare one-hour MW when an instance can automatically restart to apply updates. Ignored if MW day is not set. | `number` | `10` | no |
+| mw\_update\_track | Receive maintenance updates earlier (canary) or later (stable) | `string` | `"stable"` | no |
 | private\_network\_id | The VPC network from which the Cloud SQL instance is accessible for private IP | `string` | `""` | no |
+| query\_string\_length | Maximum query length stored in bytes. Between 256 and 4500. Default value is 1024. | `number` | `4500` | no |
+| record\_application\_tags | Query Insights will record application tags from query when enabled. | `bool` | `true` | no |
+| record\_client\_address | Query Insights will record client address when enabled. | `bool` | `true` | no |
 | region | The region for the instance | `string` | `"us-east1"` | no |
 | tier | the machine type to use for the sql instance | `string` | `"db-custom-1-3840"` | no |
 

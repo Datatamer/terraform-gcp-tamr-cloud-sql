@@ -49,15 +49,15 @@ resource "google_sql_database_instance" "tamr" {
 
     insights_config {
       query_insights_enabled  = true
-      query_string_length     = 4500
-      record_application_tags = true
-      record_client_address   = true
+      query_string_length     = var.query_string_length
+      record_application_tags = var.record_application_tags
+      record_client_address   = var.record_client_address
     }
 
     maintenance_window {
-      day          = 2
-      hour         = 10
-      update_track = "stable"
+      day          = var.mw_day
+      hour         = var.mw_hour
+      update_track = var.mw_update_track
     }
   }
 }
