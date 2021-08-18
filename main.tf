@@ -12,6 +12,7 @@ resource "google_sql_database_instance" "tamr" {
   # NOTE: this is pinned as its the version that tamr needs
   database_version = "POSTGRES_12"
 
+  deletion_protection = var.deletion_protection
 
   settings {
     tier              = var.tier

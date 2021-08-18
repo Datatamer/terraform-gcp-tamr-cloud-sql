@@ -113,3 +113,9 @@ variable "database_flags" {
   }))
   default = []
 }
+
+variable "deletion_protection" {
+  type        = bool
+  description = "Set deletion protection on Cloud SQL instance. Unless this field is set to false, a terraform destroy or terraform apply command that deletes the instance will fail."
+  default     = true
+}
