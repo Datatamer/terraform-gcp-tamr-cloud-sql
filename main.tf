@@ -1,7 +1,7 @@
 locals {
-  viewer_members_set = toset(var.cloud_sql_viewer_members)
-  client_members_set = toset(var.cloud_sql_client_members)
-  admin_members_set  = toset(var.cloud_sql_admin_members)
+  viewer_members = tolist(toset(var.cloud_sql_viewer_members))
+  client_members = tolist(toset(var.cloud_sql_client_members))
+  admin_members  = tolist(toset(var.cloud_sql_admin_members))
 }
 
 resource "google_project_service" "enable_sql" {
@@ -99,23 +99,23 @@ resource "google_sql_user" "sql_dev_user" {
 
 # IAM
 resource "google_project_iam_member" "cloud_sql_viewer" {
-  count   = length(local.viewer_members_set)
+  count   = length(local.viewer_members)
   project = var.project_id
   role    = "roles/cloudsql.viewer"
-  member  = local.viewer_members_set[count.index]
+  member  = local.viewer_members[count.index]
 }
 
 resource "google_project_iam_member" "cloud_sql_client" {
-  count   = length(local.client_members_set)
+  count   = length(local.client_members)
   project = var.project_id
   role    = "roles/cloudsql.client"
-  member  = local.client_members_set[count.index]
+  member  = local.client_members[count.index]
 }
 
 # NOTE: this is needed for backups to work
 resource "google_project_iam_member" "cloud_sql_admin" {
-  count   = length(local.admin_members_set)
+  count   = length(local.admin_members)
   project = var.project_id
   role    = "roles/cloudsql.admin"
-  member  = local.admin_members_set[count.index]
+  member  = local.admin_members[count.index]
 }
