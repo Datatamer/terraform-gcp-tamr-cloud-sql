@@ -1,7 +1,7 @@
 locals {
-  viewer_members = tolist(toset(var.cloud_sql_viewer_members))
-  client_members = tolist(toset(var.cloud_sql_client_members))
-  admin_members  = tolist(toset(var.cloud_sql_admin_members))
+  viewer_members = var.cloud_sql_viewer_members
+  client_members = var.cloud_sql_client_members
+  admin_members  = var.cloud_sql_admin_members
 }
 
 resource "google_project_service" "enable_sql" {
