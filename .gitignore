@@ -37,3 +37,7 @@ terratest.tf.json
 
 # Ignore makefile
 ops-makefile
+
+# vim
+**/*.swp
+**/*.swo

@@ -33,9 +33,6 @@ This modules creates the following resources:
 | backup\_enabled | True if backup configuration is enabled. | `bool` | `true` | no |
 | backup\_point\_in\_time\_recovery\_enabled | True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. | `bool` | `true` | no |
 | backup\_start\_time | HH:MM format time indicating when backup configuration starts. | `string` | `"06:00"` | no |
-| cloud\_sql\_admin\_members | The list of members to bind to sql admin role | `list(string)` | `[]` | no |
-| cloud\_sql\_client\_members | The list of members to bind to sql client role | `list(string)` | `[]` | no |
-| cloud\_sql\_viewer\_members | The list of members to bind to sql viewer role | `list(string)` | `[]` | no |
 | database\_flags | List of Cloud SQL flags that are applied to the database server. See [more details](https://cloud.google.com/sql/docs/mysql/flags) | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `[]` | no |
 | db\_name | name of the database | `string` | `"doit"` | no |
 | deletion\_protection | Set deletion protection on Cloud SQL instance. Unless this field is set to false, a terraform destroy or terraform apply command that deletes the instance will fail. | `bool` | `true` | no |
@@ -56,6 +53,32 @@ This modules creates the following resources:
 | tamr\_password | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+# Module usage
+
+This module does NOT configure permissions for cloud-sql viewer or clients. Those permissions will need to be defined
+in the Terraform code that consumes this module.
+
+Here are some example stubs to use:
+
+    resource "google_project_iam_binding" "cloud_sql_viewer" {
+      project = var.project_id
+      role    = "roles/cloudsql.viewer"
+      members = []
+    }
+    
+    resource "google_project_iam_binding" "cloud_sql_client" {
+      project = var.project_id
+      role    = "roles/cloudsql.client"
+      members = []
+    }
+
+    # Implementers NOTE: this is needed for tamr backups to work
+    resource "google_project_iam_binding" "cloud_sql_admin" {
+      project = var.project_id
+      role    = "roles/cloudsql.admin"
+      members = []
+    }
 
 # References
 This repo is based on:
