@@ -56,25 +56,6 @@ variable "region" {
   default     = "us-east1"
 }
 
-
-variable "cloud_sql_viewer_members" {
-  type        = list(string)
-  description = "The list of members to bind to sql viewer role"
-  default     = []
-}
-
-variable "cloud_sql_client_members" {
-  type        = list(string)
-  description = "The list of members to bind to sql client role"
-  default     = []
-}
-
-variable "cloud_sql_admin_members" {
-  type        = list(string)
-  description = "The list of members to bind to sql admin role"
-  default     = []
-}
-
 variable "backup_enabled" {
   type        = bool
   description = "True if backup configuration is enabled."
