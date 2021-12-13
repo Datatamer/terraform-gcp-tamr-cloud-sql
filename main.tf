@@ -61,10 +61,6 @@ resource "google_sql_database_instance" "tamr" {
       update_track = "stable"
     }
   }
-
-  lifecycle {
-    ignore_changes = [settings]
-  }
 }
 
 resource "google_sql_database" "tamr" {
