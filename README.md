@@ -51,6 +51,7 @@ This modules creates the following resources:
 |------|-------------|
 | instance\_name | n/a |
 | tamr\_password | n/a |
+| uri | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
