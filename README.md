@@ -14,13 +14,13 @@ This modules creates the following resources:
 | Name | Version |
 |------|---------|
 | terraform | >= 1.0.0 |
-| google | >= 4.6.0 |
+| google | >= 3.18.0, <5.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| google | >= 4.6.0 |
+| google | >= 3.18.0, <5.0.0 |
 | random | n/a |
 
 ## Inputs
