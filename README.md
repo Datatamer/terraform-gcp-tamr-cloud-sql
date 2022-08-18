@@ -1,6 +1,11 @@
 # Terraform Google Cloud SQL for Tamr
 module to setup a google cloud sql instance for Tamr.
 
+# Examples
+## Minimal
+This is the most basic example of what it would look like to use this module
+- [Minimal](https://github.com/Datatamer/terraform-gcp-tamr-cloud-sql/tree/master/examples/minimal)
+
 # Resources Created
 This modules creates the following resources:
 * cloud sql instance
