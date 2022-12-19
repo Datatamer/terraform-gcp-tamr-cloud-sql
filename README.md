@@ -38,6 +38,7 @@ This modules creates the following resources:
 | backup\_enabled | True if backup configuration is enabled. | `bool` | `true` | no |
 | backup\_point\_in\_time\_recovery\_enabled | True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. | `bool` | `true` | no |
 | backup\_start\_time | HH:MM format time indicating when backup configuration starts. | `string` | `"06:00"` | no |
+| cloudsql\_availability\_type | The availability type of the Cloud SQL instance, high availability (REGIONAL) or single zone (ZONAL). | `string` | `"REGIONAL"` | no |
 | database\_flags | List of Cloud SQL flags that are applied to the database server. See [more details](https://cloud.google.com/sql/docs/mysql/flags) | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `[]` | no |
 | db\_name | name of the database | `string` | `"doit"` | no |
 | deletion\_protection | Set deletion protection on Cloud SQL instance. Unless this field is set to false, a terraform destroy or terraform apply command that deletes the instance will fail. | `bool` | `true` | no |

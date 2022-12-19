@@ -21,7 +21,7 @@ resource "google_sql_database_instance" "tamr" {
     activation_policy = var.activation_policy
     disk_autoresize   = var.disk_autoresize
     user_labels       = var.labels
-    availability_type = "REGIONAL"
+    availability_type = var.cloudsql_availability_type
 
     dynamic "backup_configuration" {
       for_each = var.backup_enabled ? ["true"] : []

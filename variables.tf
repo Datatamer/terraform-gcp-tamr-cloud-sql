@@ -100,3 +100,9 @@ variable "deletion_protection" {
   description = "Set deletion protection on Cloud SQL instance. Unless this field is set to false, a terraform destroy or terraform apply command that deletes the instance will fail."
   default     = true
 }
+
+variable "cloudsql_availability_type" {
+  type        = string
+  description = "The availability type of the Cloud SQL instance, high availability (REGIONAL) or single zone (ZONAL)."
+  default     = "REGIONAL"
+}
