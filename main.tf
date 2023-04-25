@@ -14,6 +14,12 @@ resource "google_sql_database_instance" "tamr" {
 
   deletion_protection = var.deletion_protection
 
+  lifecycle {
+    ignore_changes = [
+      settings[0].backup_configuration[0].location,
+    ]
+  }
+
   settings {
     tier              = var.tier
     disk_size         = var.disk_size
