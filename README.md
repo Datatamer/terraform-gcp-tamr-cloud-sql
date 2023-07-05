@@ -20,13 +20,14 @@ This modules creates the following resources:
 |------|---------|
 | terraform | >= 1.0.0 |
 | google | >= 3.18.0, <5.0.0 |
+| random | > 3.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | google | >= 3.18.0, <5.0.0 |
-| random | n/a |
+| random | > 3.0.0 |
 
 ## Inputs
 
@@ -41,7 +42,7 @@ This modules creates the following resources:
 | cloudsql\_availability\_type | The availability type of the Cloud SQL instance, high availability (REGIONAL) or single zone (ZONAL). | `string` | `"REGIONAL"` | no |
 | database\_flags | List of Cloud SQL flags that are applied to the database server. See [more details](https://cloud.google.com/sql/docs/mysql/flags) | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | `[]` | no |
 | db\_name | name of the database | `string` | `"doit"` | no |
-| deletion\_protection | Set deletion protection on Cloud SQL instance. Unless this field is set to false, a terraform destroy or terraform apply command that deletes the instance will fail. | `bool` | `true` | no |
+| deletion\_protection | Set deletion protection on Cloud SQL instance. Setting this will protect instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform). | `bool` | `true` | no |
 | disk\_autoresize | Enable disk to autoresize itself | `bool` | `true` | no |
 | disk\_size | size of the disk to use | `number` | `100` | no |
 | disk\_type | The disk type to use on the instance. should be either PD\_SSD or PD\_STANDARD | `string` | `"PD_SSD"` | no |

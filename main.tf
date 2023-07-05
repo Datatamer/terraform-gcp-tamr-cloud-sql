@@ -21,13 +21,14 @@ resource "google_sql_database_instance" "tamr" {
   }
 
   settings {
-    tier              = var.tier
-    disk_size         = var.disk_size
-    disk_type         = var.disk_type
-    activation_policy = var.activation_policy
-    disk_autoresize   = var.disk_autoresize
-    user_labels       = var.labels
-    availability_type = var.cloudsql_availability_type
+    tier                        = var.tier
+    disk_size                   = var.disk_size
+    disk_type                   = var.disk_type
+    activation_policy           = var.activation_policy
+    disk_autoresize             = var.disk_autoresize
+    user_labels                 = var.labels
+    availability_type           = var.cloudsql_availability_type
+    deletion_protection_enabled = var.deletion_protection
 
     dynamic "backup_configuration" {
       for_each = var.backup_enabled ? ["true"] : []
