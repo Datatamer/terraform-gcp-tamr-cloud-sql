@@ -108,9 +108,9 @@ variable "cloudsql_availability_type" {
 }
 
 variable "require_ssl" {
-  type        = string
+  type        = bool
   description = "Set if SSL is required for the Cloud SQL instance."
-  default     = "false"
+  default     = false
 }
 
 variable "ssl_mode" {
