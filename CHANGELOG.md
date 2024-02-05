@@ -1,5 +1,8 @@
 # GCP Tamr Cloud SQL module
 
+## v5.2.0 - Feb 5th 2022
+* Add SSL variables in the setting session in main.tf
+
 ## v5.1.2 - August 16th 2022
 * Add license file
 
