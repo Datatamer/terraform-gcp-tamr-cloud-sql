@@ -106,3 +106,15 @@ variable "cloudsql_availability_type" {
   description = "The availability type of the Cloud SQL instance, high availability (REGIONAL) or single zone (ZONAL)."
   default     = "REGIONAL"
 }
+
+variable "require_ssl" {
+  type        = string
+  description = "Set if SSL is required for the Cloud SQL instance."
+  default     = "false"
+}
+
+variable "ssl_mode" {
+  type        = string
+  description = "Set up the SSL mode. If SSL is required, this value is TRUSTED_CLIENT_CERTIFICATE_REQUIRED."
+  default     = "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
+}

@@ -29,6 +29,7 @@ resource "google_sql_database_instance" "tamr" {
     user_labels                 = var.labels
     availability_type           = var.cloudsql_availability_type
     deletion_protection_enabled = var.deletion_protection
+    
 
     dynamic "backup_configuration" {
       for_each = var.backup_enabled ? ["true"] : []
@@ -52,6 +53,8 @@ resource "google_sql_database_instance" "tamr" {
       content {
         ipv4_enabled    = false
         private_network = var.private_network_id
+        require_ssl     = var.require_ssl
+        ssl_mode        = var.ssl_mode
       }
     }
 
