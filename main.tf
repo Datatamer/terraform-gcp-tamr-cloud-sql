@@ -66,8 +66,8 @@ resource "google_sql_database_instance" "tamr" {
     }
 
     maintenance_window {
-      day          = 2
-      hour         = 10
+      day          = 5  # Friday
+      hour         = 17 # 5pm UTC = 12 pm EST
       update_track = "stable"
     }
   }
