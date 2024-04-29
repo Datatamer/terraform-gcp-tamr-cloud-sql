@@ -17,7 +17,10 @@ resource "google_sql_database_instance" "tamr" {
   lifecycle {
     ignore_changes = [
       settings[0].backup_configuration[0].location,
+      settings[0].disk_size, # since we have autoresize enabled, we don't want to change the disk size
     ]
+
+    prevent_destroy = true
   }
 
   settings {
@@ -79,6 +82,11 @@ resource "google_sql_database" "tamr" {
   name     = var.db_name
   project  = var.project_id
   instance = google_sql_database_instance.tamr.name
+
+  # Prevent deletion of the database inside the instance
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # random password for db
@@ -94,6 +102,9 @@ resource "google_sql_user" "sql_dev_user" {
   project  = var.project_id
   instance = google_sql_database_instance.tamr.name
   password = random_password.sql_tamr_user_password.result
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # TODO: if need more config for the database use postgres
