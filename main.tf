@@ -6,9 +6,9 @@ resource "google_project_service" "enable_sql" {
 }
 
 resource "google_sql_database_instance" "tamr" {
-  name    = var.name
-  project = var.project_id
-  region  = var.region
+  name             = var.name
+  project          = var.project_id
+  region           = var.region
   database_version = var.postgres_version
 
   deletion_protection = var.deletion_protection
