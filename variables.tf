@@ -118,3 +118,9 @@ variable "ssl_mode" {
   description = "Set up the SSL mode. If SSL is required, this value is TRUSTED_CLIENT_CERTIFICATE_REQUIRED."
   default     = "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
 }
+
+variable "postgres_version" {
+  type        = string
+  description = "Version of Postgres to install on the CloudSQL instance"
+  default     = "POSTGRES_12"
+}

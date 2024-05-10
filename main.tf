@@ -10,7 +10,7 @@ resource "google_sql_database_instance" "tamr" {
   project = var.project_id
   region  = var.region
   # NOTE: this is pinned as its the version that tamr needs
-  database_version = "POSTGRES_12"
+  database_version = var.postgres_version
 
   deletion_protection = var.deletion_protection
 
