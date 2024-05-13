@@ -52,6 +52,7 @@ No modules.
 | <a name="input_require_ssl"></a> [require\_ssl](#input\_require\_ssl) | Set if SSL is required for the Cloud SQL instance. | `bool` | `false` | no |
 | <a name="input_ssl_mode"></a> [ssl\_mode](#input\_ssl\_mode) | Set up the SSL mode. If SSL is required, this value is TRUSTED\_CLIENT\_CERTIFICATE\_REQUIRED. | `string` | `"ALLOW_UNENCRYPTED_AND_ENCRYPTED"` | no |
 | <a name="input_tier"></a> [tier](#input\_tier) | the machine type to use for the sql instance | `string` | `"db-custom-1-3840"` | no |
+| <a name="input_postgres_version"></a> [tier](#input\_postgres\_version) | Version of Postgres to install on the CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 
 ## Outputs
 
