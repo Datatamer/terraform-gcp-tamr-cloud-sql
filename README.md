@@ -47,12 +47,12 @@ No modules.
 | <a name="input_disk_type"></a> [disk\_type](#input\_disk\_type) | The disk type to use on the instance. should be either PD\_SSD or PD\_STANDARD | `string` | `"PD_SSD"` | no |
 | <a name="input_enable_private_ip"></a> [enable\_private\_ip](#input\_enable\_private\_ip) | Whether this instance should use a public or private ip address | `bool` | `false` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | labels to be attached to the resources created | `map(string)` | `{}` | no |
+| <a name="input_postgres_version"></a> [postgres\_version](#input\_postgres\_version) | Version of Postgres to install on the CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 | <a name="input_private_network_id"></a> [private\_network\_id](#input\_private\_network\_id) | The VPC network from which the Cloud SQL instance is accessible for private IP | `string` | `""` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region for the instance | `string` | `"us-east1"` | no |
 | <a name="input_require_ssl"></a> [require\_ssl](#input\_require\_ssl) | Set if SSL is required for the Cloud SQL instance. | `bool` | `false` | no |
 | <a name="input_ssl_mode"></a> [ssl\_mode](#input\_ssl\_mode) | Set up the SSL mode. If SSL is required, this value is TRUSTED\_CLIENT\_CERTIFICATE\_REQUIRED. | `string` | `"ALLOW_UNENCRYPTED_AND_ENCRYPTED"` | no |
 | <a name="input_tier"></a> [tier](#input\_tier) | the machine type to use for the sql instance | `string` | `"db-custom-1-3840"` | no |
-| <a name="input_postgres_version"></a> [tier](#input\_postgres\_version) | Version of Postgres to install on the CloudSQL instance | `string` | `"POSTGRES_12"` | no |
 
 ## Outputs
 
