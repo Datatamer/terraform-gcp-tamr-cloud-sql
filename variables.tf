@@ -122,5 +122,5 @@ variable "ssl_mode" {
 variable "postgres_version" {
   type        = string
   description = "Version of Postgres to install on the CloudSQL instance"
-  default     = "POSTGRES_12"
+  default     = "POSTGRES_17"
 }
