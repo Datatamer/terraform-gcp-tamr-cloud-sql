@@ -55,7 +55,6 @@ resource "google_sql_database_instance" "tamr" {
       content {
         ipv4_enabled    = false
         private_network = var.private_network_id
-        require_ssl     = var.require_ssl
         ssl_mode        = var.ssl_mode
       }
     }
